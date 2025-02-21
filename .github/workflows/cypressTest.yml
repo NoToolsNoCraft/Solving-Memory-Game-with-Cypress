@@ -20,4 +20,4 @@ jobs:
         run: npm install
 
       - name: Run Cypress test
-        run: npx cypress run --spec "root/cypress/e2e/spec.cy.js"
+        run: npx cypress run --spec "cypress/e2e/spec.cy.js"
