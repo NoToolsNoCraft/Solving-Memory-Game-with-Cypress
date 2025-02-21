@@ -1,23 +1,26 @@
-# .github/workflows/cypress-tests.yml
-name: Cypress Test
+name: Run Cypress Tests
 
 on:
   workflow_dispatch:
 
 jobs:
-  run-cypress-tests:
+  cypress-run:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: '16'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Cypress
+        run: npm install cypress --save-dev
 
-      - name: Run Cypress test
+      - name: Make Cypress binary executable
+        run: chmod +x ./node_modules/.bin/cypress
+
+      - name: Run Cypress Tests
         run: npx cypress run --spec "cypress/e2e/spec.cy.js"
