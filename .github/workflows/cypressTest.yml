@@ -19,8 +19,8 @@ jobs:
       - name: Install Cypress
         run: npm install cypress --save-dev
 
-      - name: Make Cypress binary executable
-        run: chmod +x ./node_modules/.bin/cypress
+      - name: Install Cypress binary
+        run: npx cypress install
 
       - name: Run Cypress Tests
         run: npx cypress run --spec "cypress/e2e/spec.cy.js"
